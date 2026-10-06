@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Menú digital del restaurante">
+  <title>Menú digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#" id="brandLink" aria-label="Inicio">
+          <div class="brand-utensils" aria-hidden="true">🍴</div>
+          <div class="brand-copy">
+            <div class="brand-name" id="restaurantName">Cargando...</div>
+            <div class="brand-subtitle">RESTAURANTE</div>
+          </div>
+        </a>
+
+        <nav class="top-nav" aria-label="Navegación principal">
+          <button type="button" class="top-nav-item active" data-top-action="home">⌂ <span>Inicio</span></button>
+          <button type="button" class="top-nav-item" data-top-action="promociones">🔥 <span>Promociones</span></button>
+          <button type="button" class="top-nav-item" data-top-action="sugerencias">⭐ <span>Sugerencias</span></button>
+          <button type="button" class="top-nav-item" data-top-action="menu-dia">🍽️ <span>Menú del día</span></button>
+        </nav>
+
+        <div class="header-tools">
+          <button class="search-header" id="searchToggle" type="button" aria-label="Buscar productos" title="Buscar productos">
+            <span class="header-search-icon" aria-hidden="true">⌕</span>
+          </button>
+          <button class="diet-toggle" type="button" data-filter="vegano" title="Filtrar productos veganos"><span class="diet-icon vegan-icon" aria-hidden="true">🌿</span><span>Vegano</span></button>
+          <button class="diet-toggle" type="button" data-filter="vegetariano" title="Filtrar productos vegetarianos"><span class="diet-icon vegetarian-icon" aria-hidden="true">🥬</span><span>Vegetariano</span></button>
+          <button class="diet-toggle" type="button" data-filter="sintacc" title="Filtrar productos sin TACC"><span class="diet-icon tacc-icon" aria-hidden="true">🌾</span><span>Sin TACC</span></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-title"><span>🍴</span> Categorías</div>
+        <div id="categoryMenu" class="category-menu"></div>
+      </aside>
+
+      <main class="main-content">
+        <section class="hero" id="hero">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <p class="hero-welcome">Bienvenidos a</p>
+            <h1 id="heroTitle">El Rincón</h1>
+            <p id="restaurantDescription">Disfrutá de nuestros sabores</p>
+            <button id="fullMenuButton" class="hero-button" type="button">Ver la carta completa</button>
+          </div>
+        </section>
+
+        <section class="special-strip" id="specialStrip">
+          <button class="special-tile" id="specialPromociones" type="button" data-special="promociones" hidden>
+            <span class="special-image-wrap"><img id="promoTileImage" src="" alt="Promociones"></span>
+            <span class="special-overlay"></span>
+            <span class="special-copy"><strong>Promociones</strong><small>¡No te las pierdas!</small><em>Ver más</em></span>
+          </button>
+          <button class="special-tile" id="specialSugerencias" type="button" data-special="sugerencias" hidden>
+            <span class="special-image-wrap"><img id="suggestionTileImage" src="" alt="Sugerencias"></span>
+            <span class="special-overlay"></span>
+            <span class="special-copy"><strong>Sugerencias</strong><small>Lo mejor de la casa</small><em>Ver más</em></span>
+          </button>
+          <button class="special-tile" id="specialMenuDia" type="button" data-special="menu-dia" hidden>
+            <span class="special-image-wrap"><img id="menuDiaTileImage" src="" alt="Menú del día"></span>
+            <span class="special-overlay"></span>
+            <span class="special-copy"><strong>Menú del día</strong><small>Platos especiales</small><em>Ver más</em></span>
+          </button>
+        </section>
+
+        <section class="search-panel" id="searchPanel" hidden>
+          <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input id="searchInput" type="text" placeholder="¿Qué estás buscando?" autocomplete="off" inputmode="search">
+            <button id="clearSearch" class="clear-search" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+          </div>
+        </section>
+
+        <section class="content-panel" id="contentPanel">
+          <div class="content-heading">
+            <div>
+              <p class="eyebrow" id="contentEyebrow">CARTA</p>
+              <h2 id="contentTitle">Menú</h2>
+            </div>
+            <button id="showAllButton" class="link-button" type="button">Ver todos</button>
+          </div>
+          <div id="menuRoot"></div>
+
+          <div id="searchResults" hidden>
+            <div class="products-grid" id="searchResultsList"></div>
+            <div class="empty-state" id="emptySearch" hidden>
+              <div class="empty-icon">⌕</div>
+              <h3>No encontramos productos</h3>
+              <p>Probá con otro nombre, ingrediente o categoría.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand" id="footerRestaurantName"></div>
+        <div class="footer-info" id="footerInfo"></div>
+        <div class="footer-social" id="footerSocial"></div>
+        <small>Menú digital</small>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/restaurantes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
