@@ -10,7 +10,7 @@ window.RESTAURANTES = {
     instagram: "",
     facebook: "",
     presentacion: "presentacion.jpg",
-    baseUrl: "https://javier-git-2026.github.io/restaurante-001/",
+    baseUrl: "https://javier-git-2026.github.io/restaurante-001/blob/main/",
     productos: "productos.json",
     promociones: "promociones.json",
     sugerencias: "sugerencias.json",
