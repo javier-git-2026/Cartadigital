@@ -307,12 +307,16 @@ function bindCartProductEvents() {
     });
   });
   root.querySelectorAll("[data-quick-plus]").forEach(button => {
+    if (button.dataset.cartBound) return;
+    button.dataset.cartBound = "1";
     button.addEventListener("click", () => {
       const input = root.querySelector(`[data-quick-qty="${CSS.escape(button.dataset.quickPlus)}"]`);
       if (input) input.value = Math.max(1, parseInt(input.value, 10) || 1) + 1;
     });
   });
   root.querySelectorAll("[data-quick-minus]").forEach(button => {
+    if (button.dataset.cartBound) return;
+    button.dataset.cartBound = "1";
     button.addEventListener("click", () => {
       const input = root.querySelector(`[data-quick-qty="${CSS.escape(button.dataset.quickMinus)}"]`);
       if (input) input.value = Math.max(1, (parseInt(input.value, 10) || 1) - 1);
