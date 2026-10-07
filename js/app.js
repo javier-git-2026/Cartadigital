@@ -562,6 +562,9 @@ function renderGroupedProducts(products, title, eyebrow) {
       `).join("")}
     </section>
   `).join("");
+
+  // Las tarjetas se generan dinámicamente: volver a enlazar los controles del carrito.
+  bindCartProductEvents();
 }
 
 function specialResultCard(item, folder) {
